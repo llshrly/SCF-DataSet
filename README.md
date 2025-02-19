@@ -10,16 +10,15 @@
 
 供应链金融领域模型知识能力评测结果如下：
 
-<div style="text-align: center; width: 30%; margin: 0 auto;">
-    <img src="./images/图片0.png" alt="模型评测结果" style="max-width: 100%; height: auto;" />
-</div>
+<p align="center">
+  <img src="./images/图片0.png" width="30%" alt="模型评测结果">
+</p>
 
 数据集一览：
 
-<div style="text-align: center; width: 80%; margin: 0 auto;">
-    <img src="./images/图片01.png" alt="模型评测结果" style="max-width: 100%; height: auto;" />
-</div>
-
+<p align="center">
+  <img src="./images/图片01.png" width="80%" alt="模型评测结果">
+</p>
 
 
 ## 目录结构说明
@@ -72,26 +71,26 @@
 ### 1. Dify 工作流导入
 
 本项目中的题目生成、校验所用的dify工作流，均已导出为 DSL 文件，并位于本项目的 [dify_file](./dify_file/)文件夹中，在运行前，首先需要将对应工作流导入您的 Dify 工作室中。
-<div style="text-align: center; width: 80%; margin: 0 auto;">
-    <img src="./images/图片1.png" alt="dify导入图片" style="max-width: 100%; height: auto;" />
-</div>
+<p align="center">
+  <img src="./images/图片1.png" width="80%" alt="dify导入图片">
+</p>
 
 
 ### 2. LLM 节点配置
 
-<div style="text-align: center; width: 80%; margin: 0 auto; display: flex;">
-    <img src="./images/图片2.png" alt="描述文字1" style="width: calc(28% - 3%); margin-right: 14%; height: 100%; object-fit: contain;" />
-    <img src="./images/图片3.png" alt="描述文字2" style="width: calc(64% - 3%); height: 100%; object-fit: contain;" />
-</div>
+<p align="center">
+  <img src="./images/图片2.png" width="25%" alt="描述文字1" hspace="20">
+  <img src="./images/图片3.png" width="60%" alt="描述文字2">
+</p>
 
 配置模型供应商时，可以根据 Dify 页面提示，申请所需模型的 API Key 并使用。工作流内默认的模型是 minimax-6.5s和 qianwen1.5 模型，可以根据实际的使用需要和个人偏好修改 LLM 节点的模型供应商和模型。若更换模型需在工作流内修改 LLM 节点的模型选择。
 
 ### 3. API Key 申请与填写
 
 #### (1)申请
-<div style="text-align: center; width: 80%; margin: 0 auto;">
-    <img src="./images/图片4.png" alt="dify导入图片" style="max-width: 100%; height: auto;" />
-</div>
+<p align="center">
+  <img src="./images/图片4.png" width="80%" alt="dify导入图片">
+</p>
 
 在工作流编辑界面的左侧导航栏点击“访问 API”，然后点击右上角的 API 密钥进行申请，在记录申请的 API key 的同时还需记录下右上角的 API 服务器地址。
 
@@ -131,7 +130,7 @@ def get_llm_response(input_text):
 
 <table>
     <tr>
-        <th> diffy 文件 </th>
+        <th> dify 文件 </th>
         <th> python 文件 </th>
         <th> 描述</th>
     </tr>

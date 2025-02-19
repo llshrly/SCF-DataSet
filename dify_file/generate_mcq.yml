@@ -1,0 +1,347 @@
+app:
+  description: 根据用户提供内容生成高质量单选题，并为每题提供4个选项、正确答案和原文来源
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: QA单选题
+kind: app
+version: 0.1.1
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: question-classifier
+        targetType: tool
+      id: 1720159571972-1-1720166531115-target
+      selected: false
+      source: '1720159571972'
+      sourceHandle: '1'
+      target: '1720166531115'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: variable-aggregator
+      id: 1720166531115-source-1720162710595-target
+      selected: false
+      source: '1720166531115'
+      sourceHandle: source
+      target: '1720162710595'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: question-classifier
+        targetType: variable-aggregator
+      id: 1720159571972-2-1720162710595-target
+      selected: false
+      source: '1720159571972'
+      sourceHandle: '2'
+      target: '1720162710595'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: variable-aggregator
+        targetType: llm
+      id: 1720162710595-source-llm-target
+      selected: false
+      source: '1720162710595'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: question-classifier
+      id: 1719994050228-source-1720159571972-target
+      selected: false
+      source: '1719994050228'
+      sourceHandle: source
+      target: '1720159571972'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: llm-source-1725331210112-target
+      source: llm
+      sourceHandle: source
+      target: '1725331210112'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 54
+      id: '1719994050228'
+      position:
+        x: 201.49171251149528
+        y: 293.47747838468524
+      positionAbsolute:
+        x: 201.49171251149528
+        y: 293.47747838468524
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            frequency_penalty: 0.3
+            presence_penalty: 0.2
+            temperature: 0.5
+            top_p: 0.85
+          mode: chat
+          name: abab6.5s-chat
+          provider: minimax
+        prompt_template:
+        - id: 67bcb989-52c0-4717-8362-c859188784dc
+          role: system
+          text: "- Role: 单选题专家出题人\n- Background: 用户需要一个能够理解所给文本内容，并根据这些文本生成10道单选题，并输出json格式的出题人。\n\
+            - Profile: 这个角色是一位经验丰富的单选题出题专家，具备文本分析、问题生成、选项设计、格式化输出的能力。\n- Skills: 文本分析、问题生成、选项设计、格式化输出.\n\
+            - Goals: 设计一个流程，能够从专业文本中提取关键信息，生成10道高质量的单选题，并以json格式输出。 \n- Constrains:\
+            \ 确保生成的问题和选项准确、相关，并且覆盖上传文本的核心内容，避免针对同一句话重复生成问题和答案，不要出现以上全部、所有以上、某项和某项、无法确定这类造成选项之间包含关系的选项。\n\
+            - OutputFormat: 单选题，包括问题、ABCD四个选项和正确答案\n- Workflow:\n1.  阅读并分析上传的文本。\n\
+            2.  提取关键概念、术语和实践，生成相关问题。\n3.  为每个问题设计4个选项，包括一个正确答案和3个干扰项，不要出现选项之间的包含关系。\n\
+            4.  验证问题和选项的准确性和相关性。\n5.  将问题、选项和正确答案配对，形成单选题。\n7. 一共生成10道题目,并按要求输出json。\n"
+        - id: 2db00666-3305-4a1c-8811-9a5c1aa16e5e
+          role: user
+          text: '供应链金融中常见的融资模式包括应收账款融资、存货融资和预付账款融资。应收账款融资允许供应商将其应收账款出售或质押给金融机构以换取即时资金。存货融资涉及使用存货作为担保来获取贷款。预付账款融资则是买方获得资金以预付给供应商，以期获得价格优惠或确保货物供应。
+
+            '
+        - id: aa45abb0-2cc1-4f5d-97a9-d12bfd99f8f0
+          role: assistant
+          text: '{
+
+            "question": "供应链金融中常见的融资模式是什么",
+
+            "options": {
+
+            "A": "应收账款融资",
+
+            "B": "库存融资",
+
+            "C": "预付款融资",
+
+            "D": "所有以上"
+
+            },
+
+            "answer": "D"
+
+            },
+
+            {
+
+            "question": "应收账款融资的融资模式的流程是怎样的？",
+
+            "options": {
+
+            "A": "供应商将其应收账款出售或质押给金融机构以换取即时资金",
+
+            "B": "使用存货作为担保来获取贷款",
+
+            "C": "买方获得资金以预付给供应商，以期获得价格优惠或确保货物供应",
+
+            "D": "不确定"
+
+            },
+
+            "answer": "A"
+
+            }
+
+            '
+        - id: 7e65454d-0cdc-42f2-9fdd-61e16677cf75
+          role: user
+          text: '{{#1720162710595.Group1#}}'
+        selected: true
+        title: LLM题目生成
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: llm
+      position:
+        x: 1286.4968660819322
+        y: 403.79410247427194
+      positionAbsolute:
+        x: 1286.4968660819322
+        y: 403.79410247427194
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        classes:
+        - id: '1'
+          name: 用户输入内容为网页链接url
+        - id: '2'
+          name: 用户输入内容为文本
+        desc: ''
+        instructions: ''
+        model:
+          completion_params:
+            frequency_penalty: 0.5
+            presence_penalty: 0.5
+            temperature: 0.2
+            top_p: 0.75
+          mode: chat
+          name: qwen1.5-72b-chat
+          provider: xinference
+        query_variable_selector:
+        - '1719994050228'
+        - sys.query
+        selected: false
+        title: 问题分类器
+        topics: []
+        type: question-classifier
+      height: 184
+      id: '1720159571972'
+      position:
+        x: 463.9646664331067
+        y: 293.47747838468524
+      positionAbsolute:
+        x: 463.9646664331067
+        y: 293.47747838468524
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        advanced_settings:
+          group_enabled: true
+          groups:
+          - groupId: 38e94761-60d2-40f2-bffc-b87177f1f3ed
+            group_name: Group1
+            output_type: string
+            variables:
+            - - '1720166531115'
+              - text
+            - - sys
+              - query
+        desc: ''
+        output_type: string
+        selected: false
+        title: 变量聚合器
+        type: variable-aggregator
+        variables:
+        - - sys
+          - query
+        - - '1720166531115'
+          - text
+      height: 138
+      id: '1720162710595'
+      position:
+        x: 988.8050329131343
+        y: 403.79410247427194
+      positionAbsolute:
+        x: 988.8050329131343
+        y: 403.79410247427194
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: webscraper
+        provider_name: webscraper
+        provider_type: builtin
+        selected: false
+        title: 网页爬虫
+        tool_configurations:
+          generate_summary: null
+          user_agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+            (KHTML, like Gecko) Chrome/100.0.1000.0 Safari/537.36
+        tool_label: 网页爬虫
+        tool_name: webscraper
+        tool_parameters:
+          url:
+            type: mixed
+            value: '{{#sys.query#}}'
+        type: tool
+      height: 116
+      id: '1720166531115'
+      position:
+        x: 719.7650171282996
+        y: 218.6863551460778
+      positionAbsolute:
+        x: 719.7650171282996
+        y: 218.6863551460778
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#llm.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 107
+      id: '1725331210112'
+      position:
+        x: 1598.8971400226274
+        y: 403.79410247427194
+      positionAbsolute:
+        x: 1598.8971400226274
+        y: 403.79410247427194
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -137.66018457928158
+      y: -20.38573276299485
+      zoom: 1.036335921235578

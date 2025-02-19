@@ -1,0 +1,318 @@
+app:
+  description: "\u5B8C\u6210\u8F93\u5165\u7684\u5355\u9009\u9898\u5E76\u7ED9\u51FA\
+    \u7406\u7531"
+  icon: "\U0001F916"
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: "\u5224\u65AD\u9898\u6821\u9A8C"
+kind: app
+version: 0.1.0
+workflow:
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: llm
+      id: 1720576781531-llm
+      source: '1720576781531'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: llm-source-1720582846338-target
+      source: llm
+      sourceHandle: source
+      target: '1720582846338'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1720582846338-source-1720577056305-target
+      source: '1720582846338'
+      sourceHandle: source
+      target: '1720577056305'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: answer
+      id: 1720577056305-source-answer-target
+      source: '1720577056305'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: "\u5F00\u59CB"
+        type: start
+        variables: []
+      height: 52
+      id: '1720576781531'
+      position:
+        x: 30
+        y: 252.5
+      positionAbsolute:
+        x: 30
+        y: 252.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.5
+          mode: chat
+          name: qwen1.5-72b-chat
+          provider: xinference
+        prompt_template:
+        - id: e683aef2-3fa4-4a47-bece-b6eddcda3711
+          role: system
+          text: "- Role: \u505A\u9898\u673A\u5668\u4EBA\n\n- Background: \u7528\u6237\
+            \u9700\u8981\u4E00\u4E2A\u80FD\u591F\u81EA\u52A8\u5B8C\u6210\u5224\u65AD\
+            \u9898\u5E76\u63D0\u4F9B\u7B54\u6848\u89E3\u6790\u7684AI\u52A9\u624B\u3002\
+            \n- Profile: \u60A8\u662F\u4E00\u4E2A\u4E13\u4E1A\u7684\u505A\u9898\u673A\
+            \u5668\u4EBA\uFF0C\u5177\u5907\u5FEB\u901F\u51C6\u786E\u5730\u5B8C\u6210\
+            \u5355\u9009\u9898\u5E76\u63D0\u4F9B\u8BE6\u7EC6\u89E3\u6790\u7684\u80FD\
+            \u529B\u3002\n- Skills: \u9605\u8BFB\u7406\u89E3\u3001\u903B\u8F91\u63A8\
+            \u7406\u3001\u77E5\u8BC6\u5E94\u7528\u3001\u6B63\u8BEF\u5224\u65AD\uFF0C\
+            \u89E3\u6790\u8868\u8FBE\u3002\n- Goals: \u6839\u636E\u7528\u6237\u8F93\
+            \u5165\u7684\u5224\u65AD\u9898\uFF0C\u505A\u51FA\u6B63\u8BEF\u5224\u65AD\
+            \u5E76\u63D0\u4F9B\u8BE6\u7EC6\u7684\u89E3\u6790\u3002\n- Constrains:\
+            \ \u786E\u4FDD\u7B54\u6848\u7684\u51C6\u786E\u6027(\u53EA\u80FD\u56DE\u7B54\
+            Y\u6216\u8005N)\uFF0C\u89E3\u6790\u7684\u6E05\u6670\u6027\u548C\u903B\u8F91\
+            \u6027\u3002\n- OutputFormat: \u6587\u672C\u56DE\u590D\uFF0C\u5305\u542B\
+            \u5224\u65AD\u7ED3\u679C\uFF08\u6B63\u786E\u7684\u56DE\u590DY\uFF0C\u9519\
+            \u8BEF\u7684\u56DE\u590DN\uFF09\u548C\u5BF9\u5E94\u7684\u89E3\u6790\u3002\
+            \n- Workflow:\n  1. \u63A5\u6536\u7528\u6237\u8F93\u5165\u7684\u5224\u65AD\
+            \u9898\u3002\n  2. \u5206\u6790\u9898\u76EE\u5224\u65AD\u6B63\u8BEF\uFF0C\
+            \u56DE\u590DY\u6216N\u3002\n  3. \u6839\u636E\u5224\u65AD\u63D0\u4F9B\u8BE6\
+            \u7EC6\u7684\u89E3\u6790\u3002\n  4. \u4EE5\u6587\u672C\u5F62\u5F0F\u56DE\
+            \u590D\u7528\u6237\uFF0C\u5305\u62EC\u9009\u62E9\u7684\u9009\u9879\u548C\
+            \u89E3\u6790\u3002\n"
+        - id: 00bbbb71-3558-4c48-a869-a0f3dd920788
+          role: user
+          text: "- Examples:\n\u82F9\u679C\u6811\u662F\u8349\u672C\u690D\u7269"
+        - id: 7261103d-e900-427b-9f9b-411910941d72
+          role: assistant
+          text: "\u7B54\u6848\uFF1AN\n\u89E3\u6790\uFF1A\u82F9\u679C\u6811\u5E94\u4E3A\
+            \u6728\u672C\u690D\u7269\u3002"
+        - id: bbd95616-8a92-4959-bd44-4992391e49a6
+          role: user
+          text: "\u6C34\u7684\u5316\u5B66\u5F0F\u662FH2O\n"
+        - id: dcc80f0f-d9fb-4b93-a071-ad9cf884afee
+          role: assistant
+          text: "\u7B54\u6848\uFF1AY\n\u89E3\u6790\uFF1A\u6C34\u7684\u5316\u5B66\u5F0F\
+            \u662FH2O\uFF0C\u8FD9\u8868\u793A\u4E00\u4E2A\u6C34\u5206\u5B50\u7531\u4E24\
+            \u4E2A\u6C22\u539F\u5B50\u548C\u4E00\u4E2A\u6C27\u539F\u5B50\u7EC4\u6210\
+            \u3002"
+        - id: 72d104d8-9078-4caa-8116-b9e90365120a
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: "\u505A\u9898"
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: llm
+      position:
+        x: 332
+        y: 252.5
+      positionAbsolute:
+        x: 332
+        y: 252.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1720577056305.result#}}'
+        desc: ''
+        selected: false
+        title: "\u76F4\u63A5\u56DE\u590D"
+        type: answer
+        variables: []
+      height: 106
+      id: answer
+      position:
+        x: 1260.857142857143
+        y: 252.5
+      positionAbsolute:
+        x: 1260.857142857143
+        y: 252.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "def main(arg1: str) -> str:\n    mid_list=arg1.split('\\n')\n\n   \
+          \ result=[]\n    for i in mid_list:\n        if i:\n            result.append(i[3:])\n\
+          \    return {\n        \"result\": result,\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[string]
+        selected: false
+        title: "\u4EE3\u7801\u6267\u884C"
+        type: code
+        variables:
+        - value_selector:
+          - '1720582846338'
+          - text
+          variable: arg1
+      height: 52
+      id: '1720577056305'
+      position:
+        x: 936
+        y: 252.5
+      positionAbsolute:
+        x: 936
+        y: 252.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.11
+          mode: chat
+          name: abab6.5s-chat
+          provider: minimax
+        prompt_template:
+        - id: ace7903c-786c-415e-82ff-f5292ea5a2aa
+          role: system
+          text: "- Role: \u6587\u672C\u89C4\u8303\u5316\u5904\u7406\u4E13\u5BB6\n\
+            - Background: \u7528\u6237\u9700\u8981\u5C06\u8F93\u5165\u7684\u6587\u672C\
+            \u4E2D\u7684\u95EE\u9898\u8FDB\u884C\u89C4\u8303\u5316\u5904\u7406\uFF0C\
+            \u4EE5\u4FBF\u4E8E\u540E\u7EED\u7684\u5206\u6790\u3001\u5B66\u4E60\u548C\
+            \u8BC4\u4F30\u3002\n- Profile: \u60A8\u662F\u4E00\u4F4D\u4E13\u4E1A\u7684\
+            \u6587\u672C\u89C4\u8303\u5316\u5904\u7406\u4E13\u5BB6\uFF0C\u5177\u5907\
+            \u5C06\u4E0D\u540C\u683C\u5F0F\u7684\u6587\u672C\u95EE\u9898\u8F6C\u6362\
+            \u4E3A\u7EDF\u4E00\u6807\u51C6\u5316\u683C\u5F0F\u7684\u80FD\u529B\u3002\
+            \n- Skills: \u6587\u672C\u5206\u6790\u3001\u683C\u5F0F\u5316\u5904\u7406\
+            \u3001\u4FE1\u606F\u63D0\u53D6\u3001\u903B\u8F91\u7ED3\u6784\u5316\u3002\
+            \n- Goals: \u5C06\u7528\u6237\u8F93\u5165\u7684\u6587\u672C\u4E2D\u7684\
+            \u95EE\u9898\u89C4\u8303\u5316\u4E3A\u7B80\u7B54\u9898\u548C\u9009\u62E9\
+            \u9898\u7684\u7EDF\u4E00\u683C\u5F0F\u3002\n- Constrains: \u786E\u4FDD\
+            \u683C\u5F0F\u5316\u540E\u7684\u6587\u672C\u6E05\u6670\u3001\u51C6\u786E\
+            \uFF0C\u5E76\u4E14\u9075\u5FAA\u6307\u5B9A\u7684\u7ED3\u6784\u8981\u6C42\
+            \u3002\u8BF7\u5B8C\u5168\u8981\u6C42\u4FEE\u6539\u683C\u5F0F\uFF0C\u4E0D\
+            \u8981\u5BF9outputformat\u4E2D\u9650\u5236\u7684\u5B57\u6BB5\u540D\u4F5C\
+            \u4EFB\u4F55\u4FEE\u6539\u3002\n- OutputFormat:\n  - \u7B80\u7B54\u9898\
+            \u683C\u5F0F\uFF1A\u7B54\u6848\u3001\u89E3\u6790\n- Workflow:\n  1. \u63A5\
+            \u6536\u7528\u6237\u8F93\u5165\u7684\u6587\u672C\u3002\n  2. \u5BF9\u56DE\
+            \u7B54\u6587\u672C\u8FDB\u884C\u683C\u5F0F\u5316\u5904\u7406\uFF0C\u5305\
+            \u62EC\u7B54\u6848\u3001\u89E3\u6790\u3002\n  5. \u786E\u4FDD\u6BCF\u4E2A\
+            \u95EE\u9898\u7684\u56DE\u7B54\u90FD\u4E25\u683C\u9075\u5FAA\u4E0A\u8FF0\
+            \u683C\u5F0F\u8981\u6C42\u3002\n  6. \u8F93\u51FA\u89C4\u8303\u5316\u540E\
+            \u7684\u6587\u672C\u3002\n"
+        - id: 8501d40e-593c-464a-a6ce-10196a18d5ba
+          role: user
+          text: "\u56DE\u7B54\uFF1A\n\u7B54\u6848\uFF1AY\n\u89E3\u6790\uFF1A\u5DF4\
+            \u9ECE\u662F\u6CD5\u56FD\u7684\u9996\u90FD\uFF0C\u56E0\u4E3A\u5B83\u662F\
+            \u6CD5\u56FD\u7684\u653F\u6CBB\u3001\u7ECF\u6D4E\u548C\u6587\u5316\u4E2D\
+            \u5FC3\u3002"
+        - id: 417b9c34-4fae-4878-a52e-604505c3e3af
+          role: assistant
+          text: "\u7B54\u6848\uFF1AY\n\u89E3\u6790\uFF1A\u5DF4\u9ECE\u662F\u6CD5\u56FD\
+            \u7684\u9996\u90FD\uFF0C\u56E0\u4E3A\u5B83\u662F\u6CD5\u56FD\u7684\u653F\
+            \u6CBB\u3001\u7ECF\u6D4E\u548C\u6587\u5316\u4E2D\u5FC3\u3002"
+        - id: 82723c85-2f75-4f4b-bbe9-b40cee30599a
+          role: user
+          text: "1\u7B54\u6848\uFF1AN\n2\u89E3\u6790\uFF1A\u5DF4\u9ECE\u662F\u6CD5\
+            \u56FD\u7684\u9996\u90FD\uFF0C\u56E0\u4E3A\u5B83\u662F\u6CD5\u56FD\u7684\
+            \u653F\u6CBB\u3001\u7ECF\u6D4E\u548C\u6587\u5316\u4E2D\u5FC3\u3002"
+        - id: 3a600d6b-d578-4f1e-9630-87f1246c379f
+          role: assistant
+          text: "\u7B54\u6848\uFF1AN\n\u89E3\u6790\uFF1A\u5DF4\u9ECE\u662F\u6CD5\u56FD\
+            \u7684\u9996\u90FD\uFF0C\u56E0\u4E3A\u5B83\u662F\u6CD5\u56FD\u7684\u653F\
+            \u6CBB\u3001\u7ECF\u6D4E\u548C\u6587\u5316\u4E2D\u5FC3\u3002"
+        - id: 6c5b52e3-016a-4086-8a97-50464c7d6eab
+          role: user
+          text: "\u6B63\u786E\u7B54\u6848\uFF1AY\n\u56DE\u7B54\u89E3\u6790\uFF1A\u5DF4\
+            \u9ECE\u662F\u6CD5\u56FD\u7684\u9996\u90FD\uFF0C\u56E0\u4E3A\u5B83\u662F\
+            \u6CD5\u56FD\u7684\u653F\u6CBB\u3001\u7ECF\u6D4E\u548C\u6587\u5316\u4E2D\
+            \u5FC3\u3002"
+        - id: ff177025-3fe0-4e70-b31b-d70d8e605b69
+          role: assistant
+          text: "\u7B54\u6848\uFF1AY\n\u89E3\u6790\uFF1A\u5DF4\u9ECE\u662F\u6CD5\u56FD\
+            \u7684\u9996\u90FD\uFF0C\u56E0\u4E3A\u5B83\u662F\u6CD5\u56FD\u7684\u653F\
+            \u6CBB\u3001\u7ECF\u6D4E\u548C\u6587\u5316\u4E2D\u5FC3\u3002"
+        - id: 126c0570-4dd5-4bd1-a4de-dada3d344580
+          role: user
+          text: '{{#llm.text#}}'
+        selected: false
+        title: "\u683C\u5F0F"
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 96
+      id: '1720582846338'
+      position:
+        x: 634
+        y: 252.5
+      positionAbsolute:
+        x: 634
+        y: 252.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: 22.023696254432025
+      y: -106.27044217238029
+      zoom: 1.2599211321520676

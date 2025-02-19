@@ -1,0 +1,328 @@
+app:
+  description: ''
+  icon: "\U0001F916"
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: "QA\u5224\u65AD\u9898"
+workflow:
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: question-classifier
+        targetType: tool
+      id: 1720159571972-1-1720166531115-target
+      source: '1720159571972'
+      sourceHandle: '1'
+      target: '1720166531115'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: variable-aggregator
+      id: 1720166531115-source-1720162710595-target
+      source: '1720166531115'
+      sourceHandle: source
+      target: '1720162710595'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: question-classifier
+        targetType: variable-aggregator
+      id: 1720159571972-2-1720162710595-target
+      source: '1720159571972'
+      sourceHandle: '2'
+      target: '1720162710595'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: variable-aggregator
+        targetType: llm
+      id: 1720162710595-source-llm-target
+      source: '1720162710595'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: question-classifier
+      id: 1719994050228-source-1720159571972-target
+      source: '1719994050228'
+      sourceHandle: source
+      target: '1720159571972'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: llm-source-1720075258672-target
+      source: llm
+      sourceHandle: source
+      target: '1720075258672'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: "\u5F00\u59CB"
+        type: start
+        variables: []
+      height: 54
+      id: '1719994050228'
+      position:
+        x: 30
+        y: 291
+      positionAbsolute:
+        x: 30
+        y: 291
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            frequency_penalty: 0.3
+            presence_penalty: 0.2
+            temperature: 0.3
+            top_p: 0.85
+          mode: chat
+          name: abab6.5s-chat
+          provider: minimax
+        prompt_template:
+        - id: 67bcb989-52c0-4717-8362-c859188784dc
+          role: system
+          text: "- Role: \u5224\u65AD\u9898\u51FA\u9898\u4E13\u5BB6\n- Background:\
+            \ \u7528\u6237\u9700\u8981\u6839\u636E\u7279\u5B9A\u7684\u6750\u6599\u751F\
+            \u6210\u5224\u65AD\u9898\uFF0C\u8FD9\u4E9B\u9898\u76EE\u4E13\u6CE8\u4E8E\
+            \u8003\u5BDF\u6982\u5FF5\u3001\u7ED3\u8BBA\u7B49\u547D\u9898\u4EE5\u53CA\
+            \u5176\u4ED6\u4FE1\u606F\u7684\u8003\u5BDF\uFF0C\u4E0D\u6D89\u53CA\u6570\
+            \u636E\u548C\u65F6\u6548\u6027\u4FE1\u606F\u3002\n- Profile: \u60A8\u662F\
+            \u4E00\u4F4D\u4E13\u4E1A\u7684\u5224\u65AD\u9898\u51FA\u9898\u4E13\u5BB6\
+            \uFF0C\u64C5\u957F\u4ECE\u6750\u6599\u4E2D\u63D0\u70BC\u5173\u952E\u6982\
+            \u5FF5\u548C\u4FE1\u606F\uFF0C\u7528\u4E8E\u51FA5\u9053\u9AD8\u8D28\u91CF\
+            \u5224\u65AD\u9898\u8F93\u51FA\u4E3Ajson\u683C\u5F0F\u3002\n- Skills:\
+            \ \u6750\u6599\u5206\u6790\u3001\u6982\u5FF5\u63D0\u53D6\u3001\u95EE\u9898\
+            \u6784\u5EFA\u3001\u539F\u6587\u8FFD\u6EAF\u3001\u683C\u5F0F\u5316\u8F93\
+            \u51FA\u3002\n- Goals: \u521B\u5EFA5\u9053\u5224\u65AD\u9898\uFF0C\u6BCF\
+            \u9898\u90FD\u5305\u542B\u9898\u5E72\u3001\"Y\"\u6216\"N\"\u7B54\u6848\
+            \u9009\u9879\u3002\n- Constrains: \u9898\u76EE\u5E94\u907F\u514D\u6D89\
+            \u53CA\u6570\u636E\u548C\u65F6\u6548\u6027\u4FE1\u606F\uFF0C\u4E13\u6CE8\
+            \u4E8E\u6982\u5FF5\u548C\u7ED3\u8BBA\u7684\u7406\u89E3\uFF0C\u786E\u4FDD\
+            \u51FA\u9898\u6765\u6E90\u56F4\u7ED5\u6750\u6599\uFF0C\u4E0D\u8981\u53EA\
+            \u51FA\u7B54\u6848\u662FY\u7684\u5224\u65AD\u9898\uFF0C\u8981\u6709\u5BF9\
+            \u6709\u9519\uFF0C\u4E0D\u80FD\u6539\u53D8\u51FA\u9898\u6570\u91CF\u5FC5\
+            \u987B\u51FA5\u9898\uFF0C\u6700\u540E\u6309\u7167\u8981\u6C42\u8F93\u51FA\
+            json\u3002\n- OutputFormat: \u6BCF\u4E2A\u95EE\u9898\u5E94\u5305\u62EC\
+            \u9898\u5E72\u3001\"Y\"\u6216\"N\"\u7B54\u6848\u9009\u9879\u3002\n- Workflow:\n\
+            \  1. \u9605\u8BFB\u5E76\u5206\u6790\u7ED9\u5B9A\u6750\u6599\u3002\n \
+            \ 2. \u8BC6\u522B\u6750\u6599\u4E2D\u7684\u5173\u952E\u6982\u5FF5\u548C\
+            \u7ED3\u8BBA\u3002\n  3. \u6839\u636E\u8FD9\u4E9B\u6982\u5FF5\u548C\u7ED3\
+            \u8BBA\u6784\u5EFA\u5224\u65AD\u9898\u3002\n  4. \u4E3A\u6BCF\u4E2A\u95EE\
+            \u9898\u63D0\u4F9B\"Y\"\u6216\"N\"\u7B54\u6848\u9009\u9879\u3002\n  5.\u4E00\
+            \u5171\u751F\u62105\u9053\u9AD8\u8D28\u91CF\u7B80\u7B54\u9898\uFF0C\u5E76\
+            \u8F93\u51FAjson\u3002\n\n"
+        - id: 2db00666-3305-4a1c-8811-9a5c1aa16e5e
+          role: user
+          text: "\u4E0E\u4F20\u7EDF\u91D1\u878D\u76F8\u6BD4\uFF0C\u6570\u5B57\u4EBA\
+            \u6C11\u5E01\u5177\u6709\u652F\u4ED8\u5373\u7ED3\u7B97\u3001\u4F9D\u6CD5\
+            \u53EF\u8FFD\u6EAF\u3001\u9AD8\u5B89\u5168\u6027\u7B49\u7279\u6027\uFF0C\
+            \u901A\u8FC7\u52A0\u8F7D\u667A\u80FD\u5408\u7EA6\uFF0C\u5177\u5907\u2018\
+            \u5168\u5468\u671F\u6D41\u5411\u900F\u660E\u53EF\u67E5\u2019\u2018\u652F\
+            \u630124\u5C0F\u65F6\u5927\u989D\u653E\u6B3E\u2019\u2018\u8D44\u91D1\u6309\
+            \u5408\u7EA6\u81EA\u52A8\u6267\u884C\u2019\u7B49\u4F18\u52BF\u3002"
+        - id: aa45abb0-2cc1-4f5d-97a9-d12bfd99f8f0
+          role: assistant
+          text: "{\_\n\"question\":\_\"\u6570\u5B57\u4EBA\u6C11\u5E01\u548C\u4F20\u7EDF\
+            \u91D1\u878D\u90FD\u662F\u4F9D\u6CD5\u53EF\u8FFD\u6EAF\u7684\u3002\",\_\
+            \n\"answer\":\_\"N\"\n}"
+        - id: 7e65454d-0cdc-42f2-9fdd-61e16677cf75
+          role: user
+          text: '{{#1720162710595.Group1#}}'
+        selected: false
+        title: "LLM\u9898\u76EE\u751F\u6210"
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: llm
+      position:
+        x: 1210.8133196129668
+        y: 434.4639959353061
+      positionAbsolute:
+        x: 1210.8133196129668
+        y: 434.4639959353061
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#llm.text#}}'
+        desc: ''
+        selected: false
+        title: "\u76F4\u63A5\u56DE\u590D"
+        type: answer
+        variables: []
+      height: 107
+      id: '1720075258672'
+      position:
+        x: 1568.517817692009
+        y: 434.4639959353061
+      positionAbsolute:
+        x: 1568.517817692009
+        y: 434.4639959353061
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        classes:
+        - id: '1'
+          name: "\u7528\u6237\u8F93\u5165\u5185\u5BB9\u4E3A\u7F51\u9875\u94FE\u63A5\
+            url"
+        - id: '2'
+          name: "\u7528\u6237\u8F93\u5165\u5185\u5BB9\u4E3A\u6587\u672C"
+        desc: ''
+        instructions: ''
+        model:
+          completion_params:
+            frequency_penalty: 0.5
+            presence_penalty: 0.5
+            temperature: 0.2
+            top_p: 0.75
+          mode: chat
+          name: abab6.5s-chat
+          provider: minimax
+        query_variable_selector:
+        - '1719994050228'
+        - sys.query
+        selected: false
+        title: "\u95EE\u9898\u5206\u7C7B\u5668"
+        topics: []
+        type: question-classifier
+      height: 184
+      id: '1720159571972'
+      position:
+        x: 333.5502172151182
+        y: 291
+      positionAbsolute:
+        x: 333.5502172151182
+        y: 291
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        advanced_settings:
+          group_enabled: true
+          groups:
+          - groupId: 38e94761-60d2-40f2-bffc-b87177f1f3ed
+            group_name: Group1
+            output_type: string
+            variables:
+            - - '1720166531115'
+              - text
+            - - sys
+              - query
+        desc: ''
+        output_type: string
+        selected: false
+        title: "\u53D8\u91CF\u805A\u5408\u5668"
+        type: variable-aggregator
+        variables:
+        - - sys
+          - query
+        - - '1720166531115'
+          - text
+      height: 139
+      id: '1720162710595'
+      position:
+        x: 932.4220153038113
+        y: 415.22549208102294
+      positionAbsolute:
+        x: 932.4220153038113
+        y: 415.22549208102294
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: webscraper
+        provider_name: webscraper
+        provider_type: builtin
+        selected: false
+        title: "\u7F51\u9875\u722C\u866B"
+        tool_configurations:
+          generate_summary: null
+          user_agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+            (KHTML, like Gecko) Chrome/100.0.1000.0 Safari/537.36
+        tool_label: "\u7F51\u9875\u722C\u866B"
+        tool_name: webscraper
+        tool_parameters:
+          url:
+            type: mixed
+            value: '{{#sys.query#}}'
+        type: tool
+      height: 116
+      id: '1720166531115'
+      position:
+        x: 659.2197269285041
+        y: 227.64964491290573
+      positionAbsolute:
+        x: 659.2197269285041
+        y: 227.64964491290573
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 0.9180667657172421
+      y: 46.3470391849641
+      zoom: 0.6171582513152485

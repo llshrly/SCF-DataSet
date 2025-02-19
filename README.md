@@ -14,7 +14,7 @@
   <img src="./images/图片0.png" width="30%" alt="模型评测结果">
 </p>
 
-数据集一览：
+数据集预览，总计包含2959道单选题、975道判断题和1161道简答题：
 
 <p align="center">
   <img src="./images/图片01.png" width="80%" alt="模型评测结果">

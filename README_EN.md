@@ -10,16 +10,15 @@ The project currently supports three types of questions: single-choice, true/fal
 
 The evaluation results for the knowledge capabilities of models in the supply chain finance domain are as follows:
 
-<div style="text-align: center; width: 30%; margin: 0 auto;">
-    <img src="./images/图片0.png" alt="模型评测结果" style="max-width: 100%; height: auto;" />
-</div>
+<p align="center">
+  <img src="./images/图片0.png" width="30%" alt="模型评测结果">
+</p>
 
-Dataset overview：
+Dataset preview, including 2,959 multiple-choice questions, 975 true/false questions, and 1,161 short answer questions.：
 
-<div style="text-align: center; width: 80%; margin: 0 auto;">
-    <img src="./images/图片01.png" alt="模型评测结果" style="max-width: 100%; height: auto;" />
-</div>
-
+<p align="center">
+  <img src="./images/图片01.png" width="80%" alt="模型评测结果">
+</p>
 
 
 ## Catalog
@@ -76,17 +75,17 @@ This project requires [Python](https://www.python.org/downloads/) environment fo
 
 All the dify workflow in our project have been already explored out as DSL file, and they are in the folder named [dify_file](./dify_file/). Before start this project you are supposed to import all the dify workflow you need into your dify studio.
 
-<div style="text-align: center; width: 80%; margin: 0 auto;">
-    <img src="./images/图片1EN.png" alt="dify导入图片" style="max-width: 100%; height: auto;" />
-</div>
+<p align="center">
+  <img src="./images/图片1.png" width="80%" alt="dify导入图片">
+</p>
 
 
 ### 2. LLM Block Settings
 
-<div style="text-align: center; width: 80%; margin: 0 auto; display: flex;">
-    <img src="./images/图片2EN.png" alt="描述文字1" style="width: calc(28% - 3%); margin-right: 14%; height: 100%; object-fit: contain;" />
-    <img src="./images/图片3EN.png" alt="描述文字2" style="width: calc(64% - 3%); height: 100%; object-fit: contain;" />
-</div>
+<p align="center">
+  <img src="./images/图片2.png" width="25%" alt="描述文字1" hspace="20">
+  <img src="./images/图片3.png" width="60%" alt="描述文字2">
+</p>
 
 When setting the model provider, you can get API key by following tips on the page and then use the model. The default  model in our dify wolkflow are minimax-6.5s and qwen1.5. And you can change any model provided in dify as you need. If necessary, just don't forget to change the model settings in LLM block of your workflow.
 
@@ -94,9 +93,9 @@ When setting the model provider, you can get API key by following tips on the pa
 ### 3. API Key Creat & Fill
 
 #### (1)Creat
-<div style="text-align: center; width: 80%; margin: 0 auto;">
-    <img src="./images/图片4EN.png" alt="dify导入图片" style="max-width: 100%; height: auto;" />
-</div>
+<p align="center">
+  <img src="./images/图片4.png" width="80%" alt="dify导入图片">
+</p>
 
 Click “API Access” in the left navigation bar in the workflow editor page, and then click the "API key" in the upper-right corner to creat an API key, and don't forget to record the "API server address" in the upper-right corner while recording the API key you created.
 
